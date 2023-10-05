@@ -1,5 +1,3 @@
-package kunganolang;
-
 import java.util.*;
 
 public class BHFinder {
@@ -12,38 +10,6 @@ public class BHFinder {
 	
 	public static void main(String[] args) {
 		
-//		HashMap<String, String[]> bhdeets = new HashMap<>();
-//		HashMap<String, HashMap<String, String>> bh = new HashMap<>();
-		
-		
-		//Details
-//		for(int i = 0; i < hey.BHouses.length; i++) {
-//			String arrDeets[] = new String[hey.BHouses.length];
-//			String arrPeople[] = new String[hey.BHouses.length];
-//			String arrPrice[] = new String[hey.BHouses.length];
-//			for(int j = 0; j < 3; j++) {
-//				arrDeets[j] = hey.BHDeets[i][j];
-//				arrPeople[j] = hey.BHPeople[i][j];
-//				arrPrice[j] = hey.BHPrice[i][j];
-//				
-//				bhdeets.put(hey.BHouses[i][j], arrDeets);
-//				bhdeets.put(hey.BHouses[i][j], arrPeople);
-//				bhdeets.put(hey.BHouses[i][j], arrPrice);
-//			}
-//		}
-		
-		//All
-//		for(int i = 0; i < hey.BUCampuses.length; i++) {
-//			for(int j = 0; j < hey.BHDeets.length; j++) {
-//				bh.put(hey.BUCampuses[i], bhdeets.get(hey));
-//			}
-//		}
-		
-//		for(int i = 0; i < hey.BUCampuses.length; i++) {
-//			for(int j = 0; j < hey.BHDeets.length; j++) {
-//				System.out.println(bhdeets.values());
-//			}
-//		}
 		for(int i=0;i<hey.BUCampuses.length;i++)
 			System.out.print("\t"+hey.BUCampuses[i]+"\t");
 		System.out.print("\n\nPick a campus: ");
@@ -118,7 +84,7 @@ public class BHFinder {
 					+ "[0] Back");
 				try {
 					rangePrice = Integer.parseInt(sc.nextLine());
-					if(rangeOccupants != 0) {
+					if(rangePrice != 0) {
 						usedFilter = true;
 					}
 					filterPanel(campus);
@@ -136,7 +102,7 @@ public class BHFinder {
 					+ "[0] Back");
 				try {
 					rangeDistance = Integer.parseInt(sc.nextLine());
-					if(rangeOccupants != 0) {
+					if(rangeDistance != 0) {
 						usedFilter = true;
 					}
 					filterPanel(campus);
@@ -147,9 +113,12 @@ public class BHFinder {
 			break;
 		case 0:
 			if(usedFilter) {
+				//testCheck
+			//System.out.println(usedFilter);
 				filter1(rangeOccupants, rangePrice, rangeDistance, campus);
 			}
 			else {
+				//testCheckSystem.out.println(usedFilter);
 				filter0(rangeOccupants, rangePrice, rangeDistance, campus);
 			}
 			break;
@@ -174,59 +143,69 @@ public class BHFinder {
 	
 	public static String[][] filter1(int rangeOccupants, int rangePrice, int rangeDistance, String campus) {
 		int i = campusChecker(campus);
-		
+		//testCheckSystem.out.println(i);
 		for(int k = 1; k < 4; k++) {
 			//rangeOccupants
+		//	System.out.println("H");
 			for(int j = 0; j < hey.BHPeople[i].length; j++) {
-				if((Integer.parseInt(hey.BHPeople[i][j]) >= 0 && Integer.parseInt(hey.BHPeople[i][j]) <= 9) && k == rangeOccupants) {
+				if((Integer.parseInt(hey.BHPeople[i][j]) >= 0 && Integer.parseInt(hey.BHPeople[i][j]) <= 9) && ((k == rangeOccupants)&&(1 == rangeOccupants))) {
 					tempBH[j][0] = hey.BHPeople[i][j];
 				}
-				else if((Integer.parseInt(hey.BHPeople[i][j]) >= 10 && Integer.parseInt(hey.BHPeople[i][j]) <= 29) && k == rangeOccupants) {
+				else if((Integer.parseInt(hey.BHPeople[i][j]) >= 10 && Integer.parseInt(hey.BHPeople[i][j]) <= 29) && ((k == rangeOccupants)&&(2 == rangeOccupants))) {
 					tempBH[j][0] = hey.BHPeople[i][j];
 				}
-				else if((Integer.parseInt(hey.BHPeople[i][j]) >= 30&& Integer.parseInt(hey.BHPeople[i][j]) <= 69) && k == rangeOccupants) {
+				else if((Integer.parseInt(hey.BHPeople[i][j]) >= 30&& Integer.parseInt(hey.BHPeople[i][j]) <= 69) && ((k == rangeOccupants)&&(3 == rangeOccupants))) {
 					tempBH[j][0] = hey.BHPeople[i][j];
 				}
-				else if((Integer.parseInt(hey.BHPeople[i][j]) >= 70) && k == rangeOccupants) {
+				else if((Integer.parseInt(hey.BHPeople[i][j]) >= 70) && ((k == rangeOccupants)&&(4 == rangeOccupants))) {
 					tempBH[j][0] = hey.BHPeople[i][j];
 				}
-				else if(k==0) {
+				else if(rangeOccupants==0) {
 					tempBH[j][0] = hey.BHPeople[i][j];
 				}
+				//System.out.println("H");
 			}
 			//rangePrice
+		//	System.out.println("H");
 			for(int j = 0; j < hey.BHPrice[i].length; j++) {
-				if((Integer.parseInt(hey.BHPrice[i][j]) >= 0 && Integer.parseInt(hey.BHPrice[i][j]) <= 999) && k == rangePrice) {
+				if((Integer.parseInt(hey.BHPrice[i][j]) >= 0 && Integer.parseInt(hey.BHPrice[i][j]) <= 999) && ((k == rangePrice)&&(1 == rangePrice))) {
+					//testCheck
+				//	System.out.println("*");
 					tempBH[j][1] = hey.BHPrice[i][j];
 				}
-				else if((Integer.parseInt(hey.BHPrice[i][j]) >= 1000 && Integer.parseInt(hey.BHPrice[i][j]) <= 1499) && k == rangePrice) {
+				else if((Integer.parseInt(hey.BHPrice[i][j]) >= 1000 && Integer.parseInt(hey.BHPrice[i][j]) <= 1499) && ((k == rangePrice)&&(2 == rangePrice))) {
+					//testCheck
+				//	System.out.println("%");
 					tempBH[j][1] = hey.BHPrice[i][j];
 				}
-				else if((Integer.parseInt(hey.BHPrice[i][j]) >= 1500&& Integer.parseInt(hey.BHPrice[i][j]) <= 4999) && k == rangePrice) {
+				else if((Integer.parseInt(hey.BHPrice[i][j]) >= 1500&& Integer.parseInt(hey.BHPrice[i][j]) <= 4999) && ((k == rangePrice)&&(3 == rangePrice))) {
+					//System.out.println("$");
 					tempBH[j][1] = hey.BHPrice[i][j];
 				}
-				else if((Integer.parseInt(hey.BHPrice[i][j]) >= 5000) && k == rangePrice) {
+				else if((Integer.parseInt(hey.BHPrice[i][j]) >= 5000) && ((k == rangePrice)&&(4 == rangePrice))) {
+					//System.out.println("#");
 					tempBH[j][1] = hey.BHPrice[i][j];
 				}
-				else {
+				else if(rangePrice==0) {
+					//System.out.println("@");
 					tempBH[j][1] = hey.BHPrice[i][j];
 				}
 			}
 			//rangeDistance
 			for(int j = 0; j < hey.BHDistance[i].length; j++) {
-				if((Integer.parseInt(hey.BHDistance[i][j]) >= 0 && Integer.parseInt(hey.BHDistance[i][j]) <= 199) && k == rangeDistance) {
+				if((Integer.parseInt(hey.BHDistance[i][j]) >= 0 && Integer.parseInt(hey.BHDistance[i][j]) <= 199) && ((k == rangeDistance)&&(1 == rangeDistance))) {
 					tempBH[j][2] = hey.BHDistance[i][j];
 				}
-				else if((Integer.parseInt(hey.BHDistance[i][j]) >= 200 && Integer.parseInt(hey.BHDistance[i][j]) <= 499) && k == rangeDistance) {
+				else if((Integer.parseInt(hey.BHDistance[i][j]) >= 200 && Integer.parseInt(hey.BHDistance[i][j]) <= 499) && ((k == rangeDistance)&&(2 == rangeDistance))) {
 					tempBH[j][2] = hey.BHDistance[i][j];
 				}
-				else if((Integer.parseInt(hey.BHDistance[i][j]) >= 500&& Integer.parseInt(hey.BHDistance[i][j]) <= 1499) && k == rangeDistance) {
+				else if((Integer.parseInt(hey.BHDistance[i][j]) >= 500&& Integer.parseInt(hey.BHDistance[i][j]) <= 1499) && ((k == rangeDistance)&&(3 == rangeDistance))) {
 					tempBH[j][2] = hey.BHDistance[i][j];
 				}
-				else if((Integer.parseInt(hey.BHDistance[i][j]) >= 1500) && k == rangeDistance) {
+				else if((Integer.parseInt(hey.BHDistance[i][j]) >= 1500) && ((k == rangeDistance)&&(4 == rangeDistance))) {
 					tempBH[j][2] = hey.BHDistance[i][j];
 				}
-				else {
+				else if(rangeDistance==0) {
 					tempBH[j][2] = hey.BHDistance[i][j];
 				}
 			}
@@ -237,7 +216,7 @@ public class BHFinder {
 	public static void displayBH(String[][] tempBH, String campus) {
 		int i = campusChecker(campus);
 		for(int j = 0; j < tempBH[0].length; j++) {
-			if(tempBH[j][0] != null) {
+			if(tempBH[i][j] != null) {
 				System.out.println((j+1) + ". " + hey.BHouses[i][j] + ": " 
 						+ "\nTotal Occupants in a Room: " + tempBH[j][0]
 						+ "\nPrice: " + tempBH[j][1] 
