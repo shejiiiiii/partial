@@ -15,7 +15,7 @@ public class BHFinder {
 		System.out.print("\n\nPick a campus: ");
 		String campus = sc.nextLine();
 		campusFinder(campus);
-		filterPanel(campus);	
+		options(campus);	
 		displayBH(tempBH, campus);
 
 	}
@@ -38,6 +38,32 @@ public class BHFinder {
 		return campus;
 	}
 	
+	public static void options(String campus) {
+		System.out.println("-----------------\n"
+				+ "[1] Search Boarding House\n"
+				+ "[2] Open Filter Options\n");
+		String option = sc.nextLine();
+		try {
+			int Ioption = Integer.parseInt(option);
+			if(Ioption == 1) {
+				searchOptions(searchPanel(), campus);
+			}
+			else {
+				filterPanel(campus);
+			}
+		}
+		catch(Exception e) {
+			options(campus);
+		}
+		
+	}
+	
+	public static String searchPanel() {
+		System.out.println("Search for Boarding Houses: ");
+		String search = sc.nextLine();
+		return search;
+	}
+	
 	public static void filterPanel(String campus) {
 		System.out.println("-----------------\n"
 				+ "Filter Options:\n"
@@ -45,13 +71,13 @@ public class BHFinder {
 				+ "[2] Price\n"
 				+ "[3] Distance\n"
 				+ "[0] Done");
-		String search = sc.nextLine();
+		
 		int filter = 0;
 		try {
-			filter = Integer.parseInt(search);
+			filter = Integer.parseInt(sc.nextLine());
 		}
 		catch(Exception e){
-			searchOptions(search, campus);
+			filterPanel(campus);
 		}
 		filterOptions(filter, campus);
 	}
@@ -71,7 +97,7 @@ public class BHFinder {
 		
 		if(!searchSuccess) {
 			System.out.println("No Boarding Houses that starts with \"" + search + "\"");
-			filterPanel(campus);
+			searchOptions(searchPanel(), campus);
 		}
 		return null;
 	}
