@@ -45,16 +45,37 @@ public class BHFinder {
 				+ "[2] Price\n"
 				+ "[3] Distance\n"
 				+ "[0] Done");
+		String search = sc.nextLine();
 		int filter = 0;
 		try {
-			filter = Integer.parseInt(sc.nextLine());
+			filter = Integer.parseInt(search);
 		}
 		catch(Exception e){
-			filterPanel(campus);
+			searchOptions(search, campus);
 		}
 		filterOptions(filter, campus);
 	}
-
+	
+	public static String searchOptions(String search, String campus) {
+		int i = campusChecker(campus);
+		boolean searchSuccess = false;
+		for(int j = 0; j < hey.BHouses[i].length; j++) {
+			if(hey.BHouses[i][j].equalsIgnoreCase(search)) {
+				searchSuccess = true;
+				System.out.println(hey.BHouses[i][j] + ": " + hey.BHDeets[i][j]
+						+ "\nTotal Occupants in a Room: " + hey.BHPeople[i][j]
+						+ "\nPrice: " + hey.BHPrice[i][j]
+						+ "\nDistance: "+ hey.BHDistance[i][j] + "\n");
+			}
+		}
+		
+		if(!searchSuccess) {
+			System.out.println("No Boarding Houses that starts with \"" + search + "\"");
+			filterPanel(campus);
+		}
+		return null;
+	}
+	
 	public static int filterOptions(int filter, String campus) {
 		switch(filter) {
 		case 1:
