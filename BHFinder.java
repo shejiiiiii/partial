@@ -12,38 +12,6 @@ public class BHFinder {
 	
 	public static void main(String[] args) {
 		
-//		HashMap<String, String[]> bhdeets = new HashMap<>();
-//		HashMap<String, HashMap<String, String>> bh = new HashMap<>();
-		
-		
-		//Details
-//		for(int i = 0; i < hey.BHouses.length; i++) {
-//			String arrDeets[] = new String[hey.BHouses.length];
-//			String arrPeople[] = new String[hey.BHouses.length];
-//			String arrPrice[] = new String[hey.BHouses.length];
-//			for(int j = 0; j < 3; j++) {
-//				arrDeets[j] = hey.BHDeets[i][j];
-//				arrPeople[j] = hey.BHPeople[i][j];
-//				arrPrice[j] = hey.BHPrice[i][j];
-//				
-//				bhdeets.put(hey.BHouses[i][j], arrDeets);
-//				bhdeets.put(hey.BHouses[i][j], arrPeople);
-//				bhdeets.put(hey.BHouses[i][j], arrPrice);
-//			}
-//		}
-		
-		//All
-//		for(int i = 0; i < hey.BUCampuses.length; i++) {
-//			for(int j = 0; j < hey.BHDeets.length; j++) {
-//				bh.put(hey.BUCampuses[i], bhdeets.get(hey));
-//			}
-//		}
-		
-//		for(int i = 0; i < hey.BUCampuses.length; i++) {
-//			for(int j = 0; j < hey.BHDeets.length; j++) {
-//				System.out.println(bhdeets.values());
-//			}
-//		}
 		for(int i=0;i<hey.BUCampuses.length;i++)
 			System.out.print("\t"+hey.BUCampuses[i]+"\t");
 		System.out.print("\n\nPick a campus: ");
